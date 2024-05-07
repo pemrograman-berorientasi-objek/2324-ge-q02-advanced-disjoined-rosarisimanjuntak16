@@ -247,6 +247,28 @@ public class Driver1 {
                         }
                     }
                         break;
+
+                        //berikan kode dengan mengikuti imputan find-the-best-student#2020/2021#odd find-the-best-student#2020/2021#even agar dapat mengeluarkan output 12S20002|B/A 12S20002|B/A
+                        case "find-the-best-student":
+                        if (parts.length < 3) {
+                            continue;
+                        }
+                        String academicYearBest = parts[1];
+                        String semesterBest = parts[2];
+                        double bestGPA = 0;
+                        String bestStudentId = "";
+                        for (Student std : students) {
+                            double gpa = calculateGPA(enrollments, std.getId());
+                            if (gpa > bestGPA) {
+                                bestGPA = gpa;
+                                bestStudentId = std.getId();
+                            }
+                        }
+                        System.out.println(bestStudentId + "|" + String.format("%.2f", bestGPA));
+                        break;
+
+                        
+
                     
                 case "course-history":
                 CourseOpenings.sort(Comparator.comparing(CourseOpening::getSemester).reversed());
