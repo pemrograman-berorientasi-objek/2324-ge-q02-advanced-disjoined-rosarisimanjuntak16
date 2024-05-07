@@ -248,7 +248,11 @@ public class Driver1 {
                     }
                         break;
 
-                        //berikan kode dengan mengikuti imputan find-the-best-student#2020/2021#odd find-the-best-student#2020/2021#even agar dapat mengeluarkan output 12S20002|B/A 12S20002|B/A
+                        //berikan kode dengan mengikuti imputan find-the-best-student#2020/2021#odd find-the-best-student#2020/2021#even agar dapat mengeluarkan output 12S20002|B/A 12S20002|B/A agar keluar sesuai dengan output yang diinginkan
+
+                        
+
+
                         case "find-the-best-student":
                         if (parts.length < 3) {
                             continue;
@@ -266,6 +270,25 @@ public class Driver1 {
                         }
                         System.out.println(bestStudentId + "|" + String.format("%.2f", bestGPA));
                         break;
+
+                        case "add-best-student":
+                        if (parts.length < 2) {
+                            continue;
+                        }
+                        String studentIdBest = parts[1];
+                        Student studentBest = findStudent(students, studentIdBest);
+                        if (studentBest == null) {
+                            continue;
+                        }
+                        for(Student student1 : students){
+                            if(student1.getId().equals(studentIdBest)){
+                                double gpa = calculateGPA(enrollments, student1.getId());
+                                int totalCredits = calculateTotalCredits(enrollments, student1.getId());
+                                System.out.println(student1.getId() + "|" + student1.getName() + "|" + student1.getYear() + "|" + student1.getMajor() + "|" + String.format("%.2f", gpa) + "|" + totalCredits);
+                                break;
+                            }
+       }
+                        
 
                         
 
